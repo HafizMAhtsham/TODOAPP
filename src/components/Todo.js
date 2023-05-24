@@ -1,8 +1,26 @@
-import React from 'react';
+import React,{ useState } from 'react';
+import TodoForm from './TodoForm';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { TiEdit } from 'react-icons/ti';
 
 const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
+    const [edit, setEdit] = useState({
+    id: null,
+    value: ''
+  });
+
+  const submitUpdate = value => {
+    updateTodo(edit.id, value);
+    setEdit({
+      id: null,
+      value: ''
+    });
+  };
+
+  if (edit.id) {
+    return <TodoForm edit={edit} onSubmit={submitUpdate} />;
+  }
+
   return (
     <div>
       {todos.map((todo, index) => (
@@ -25,7 +43,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
               className='delete-icon'
             />
             <TiEdit
-              onClick={() => updateTodo(todo.id, { ...todo, editing: true })}
+              onClick={() => setEdit({ id: todo.id, value: todo.text })}
               className='edit-icon'
             />
           </div>
