@@ -10,6 +10,7 @@ import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import API from "./components/api"
 
 function App() {
   const [api, setapi] = useState([]);
@@ -50,14 +51,7 @@ function App() {
         />
         <Route
           path="api"
-          element={api.map((item, index) => {
-            return (
-              <div key={index} className="card">
-                <p>Title:{item.title}</p>
-                <p>Id:{item.id}</p>
-              </div>
-            );
-          })}
+          element={<API/>}
         ></Route>
       </Routes>
     </Router>
