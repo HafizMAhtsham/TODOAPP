@@ -3,16 +3,13 @@ import "./App.css";
 import TodoList from "./components/TodoList";
 import {
   BrowserRouter as Router,
-  Switch,
   Route,
-  Link,
-  Routes,
+  Routes
 } from "react-router-dom";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 
 function App() {
   const [api, setapi] = useState([]);
